@@ -1,0 +1,30 @@
+
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "My Fake API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/hello": {
+      "get": {
+        "summary": "Returns hello",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "summary": "Create user",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  }
+}
