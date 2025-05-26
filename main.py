@@ -3,13 +3,12 @@ import requests
 from flask import Flask, jsonify, request
 
 
-# Load OpenAPI spec
+
 def load_openapi_spec(filepath):
     with open(filepath, 'r') as f:
         spec = json.load(f)
     return spec
 
-# Extract endpoints from OpenAPI
 
 def extract_endpoints(spec):
     endpoints = []
@@ -18,7 +17,6 @@ def extract_endpoints(spec):
             endpoints.append({"method": method.lower(), "path": path})
     return endpoints
 
-# Start mock server (minimal example)
 
 def start_mock_server():
     app = Flask(__name__)
@@ -29,7 +27,6 @@ def start_mock_server():
 
     app.run(debug=True, port=5000)
 
-# Simple test runner for endpoints
 
 def test_endpoints(base_url, endpoints):
     for endpoint in endpoints:
@@ -45,7 +42,6 @@ def test_endpoints(base_url, endpoints):
         except Exception as e:
             print(f"Error calling {endpoint['method'].upper()} {url}: {e}")
 
-# Main flow
 if __name__ == "__main__":
     spec = load_openapi_spec("Code.json")
     endpoints = extract_endpoints(spec)
@@ -57,7 +53,6 @@ if __name__ == "__main__":
     print("\n[Testing Endpoints Against Mock Server]")
     test_endpoints("http://localhost:5000", endpoints)
 
-    # Uncomment below line to run the mock server
     start_mock_server()
 
 
